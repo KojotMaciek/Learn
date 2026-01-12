@@ -1,6 +1,7 @@
 # We start by importing the Person and Database classes from our central "toolbox".
 # This is the only import we need to handle all database operations.
 from common.db_manager import Person, Database
+from add_entry_oop import *
 
 # --- Function for Listing Entries ---
 # This function contains the exact same logic as our old 'list_entries_oop.py' script.
@@ -15,31 +16,6 @@ def list_all_entries(db):
         print(person)
     print("----------------------------")
     print(f"Total entries: {len(db.entries)}")
-
-# --- Function for Adding an Entry ---
-# This function contains the logic from 'add_entry_oop.py'.
-# It takes the 'db' object so it can call the 'get_next_id' and 'add_entry' methods.
-def add_new_entry(db):
-    print("\n--- Add New Entry ---")
-    name = input("Enter NAME (first name only): ")
-    while True:
-        try:
-            # Added a check to make sure age is not empty.
-            age_str = input("Enter AGE: ")
-            if not age_str:
-                print("Age cannot be empty.")
-                continue
-            age = int(age_str)
-            break
-        except ValueError:
-            print("Invalid input. Please enter a number for age.")
-            
-    gender = input("Enter GENDER (Male/Female): ")
-    job_position = input("Enter JOB POSITION: ")
-
-    new_id = db.get_next_id()
-    new_person = Person(new_id, name, age, gender, job_position)
-    db.add_entry(new_person)
 
 # --- Function for Deleting an Entry ---
 # This function contains the logic from 'delete_entry_oop.py'.
