@@ -1,8 +1,5 @@
-from common.db_manager import Database
-
-def main():
+def delete_entry(db):
     """Main function to run the delete entry process."""
-    db = Database()
 
     # 1. Ask the user for a name.
     name_to_find = input("Enter the name of the person to find: ")
@@ -37,6 +34,3 @@ def main():
                 print("Invalid ID. Please enter an ID from the list shown above.")
         except ValueError:
             print("Invalid input. Please enter a number for the ID.")
-
-if __name__ == "__main__":
-    main()

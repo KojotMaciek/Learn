@@ -1,4 +1,4 @@
-from common.db_manager import Person, Database
+from common.db_manager import Person
 
 # This is the main function where the program's execution starts.
 def add_new_entry(db):

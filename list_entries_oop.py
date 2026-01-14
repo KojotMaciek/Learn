@@ -1,8 +1,5 @@
-from common.db_manager import Database
-
-def main():
+def list_all_entries(db):
     """Main function to list all entries."""
-    db = Database()
 
     if not db.entries:
         print("The database is currently empty.")
@@ -15,9 +12,3 @@ def main():
         print(person)
     print("----------------------------")
     print(f"Total entries: {len(db.entries)}")
-
-
-# This standard entry point ensures that the main() function is called
-# only when the script is executed directly.
-if __name__ == "__main__":
-    main()

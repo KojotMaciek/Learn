@@ -1,57 +1,9 @@
 # We start by importing the Person and Database classes from our central "toolbox".
 # This is the only import we need to handle all database operations.
-from common.db_manager import Person, Database
+from common.db_manager import Database
 from add_entry_oop import *
-
-# --- Function for Listing Entries ---
-# This function contains the exact same logic as our old 'list_entries_oop.py' script.
-# We pass 'db' (the database object) into it so it has access to the entries.
-def list_all_entries(db):
-    if not db.entries:
-        print("\nThe database is currently empty.")
-        return
-
-    print("\n--- All Database Entries ---")
-    for person in db.entries:
-        print(person)
-    print("----------------------------")
-    print(f"Total entries: {len(db.entries)}")
-
-# --- Function for Deleting an Entry ---
-# This function contains the logic from 'delete_entry_oop.py'.
-def delete_entry(db):
-    print("\n--- Delete Entry ---")
-    if not db.entries:
-        print("The database is empty. Nothing to delete.")
-        return
-
-    name_to_find = input("Enter the name of the person to find: ")
-    found_people = db.find_by_name(name_to_find)
-
-    if not found_people:
-        print(f"No entries found with the name '{name_to_find}'.")
-        return
-
-    print("\nFound the following entries:")
-    for person in found_people:
-        print(person)
-    
-    while True:
-        try:
-            # Added a small feature to allow the user to cancel the delete operation.
-            id_to_delete_str = input("\nEnter the ID of the entry you want to delete (or press Enter to cancel): ")
-            if not id_to_delete_str:
-                print("Delete operation cancelled.")
-                return
-            id_to_delete = int(id_to_delete_str)
-            
-            if any(p.id == id_to_delete for p in found_people):
-                db.delete_entry_by_id(id_to_delete)
-                break
-            else:
-                print("Invalid ID. Please enter an ID from the list shown above.")
-        except ValueError:
-            print("Invalid input. Please enter a number for the ID.")
+from list_entries_oop import *
+from delete_entry_oop import *
 
 # --- A Simple Function to Show the Menu ---
 # The only job of this function is to print the options for the user.
